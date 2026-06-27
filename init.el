@@ -1,0 +1,63 @@
+;; Basic UI
+(setq inhibit-startup-screen t)
+(menu-bar-mode -1)
+(tool-bar-mode -1)
+(scroll-bar-mode -1)
+
+;; Backups: keep your directory clean
+(setq backup-directory-alist `(("." . "~/.emacs.d/backups")))
+(setq auto-save-file-name-transforms `((".*" "~/.emacs.d/auto-save/\\1" t)))
+
+;; Better defaults
+(setq-default fill-column 80)
+(global-display-line-numbers-mode 1)
+
+;; Use spaces for indentation
+(setq-default indent-tabs-mode nil)
+(setq-default tab-width 4)
+
+;; Load packages config
+(add-to-list 'load-path "~/.emacs.d/lisp")
+(require 'packages)
+(require 'keybinds)
+(require 'notes)
+(require 'my-yt-config)
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(custom-safe-themes
+   '("c4df9006b9eb32599d758800a32f3487c2cdf13826084511783b47d419024af2" default))
+ '(package-selected-packages
+   '(catppuccin-theme consult consult-project-extra dashboard dired-subtree
+                      doom-modeline elfeed emms markdown-mode orderless
+                      pdf-tools vertico vterm zetteldeft)))
+
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(elfeed-search-date-face ((t (:foreground "#9399b2"))))
+ '(elfeed-search-feed-face ((t (:foreground "#89b4fa"))))
+ '(elfeed-search-tag-face ((t (:foreground "#a6e3a1"))))
+ '(emms-playlist-selected-face ((t (:foreground "#f5c2e7" :weight bold))))
+ '(emms-playlist-track-face ((t (:foreground "#cdd6f4")))))
+
+(setq doom-modeline-icon nil)
+
+(setq elfeed-search-filter "+unread")
+
+
+
+;; EMMS ;;
+
+(setq emms-player-list '(emms-player-mpv))
+(setq emms-source-file-default-directory "~/Music/")
+(setq emms-info-functions '(emms-info-native))
+(setq emms-track-description-function 'emms-track-simple-description)
+(setq emms-mode-line-format " [%s]")
+
+(set-frame-font "Iosevka Term-11" nil t)
+
